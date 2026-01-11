@@ -6,17 +6,17 @@
 }
 
 html {
-    background-color: #000; /* Fond noir profond */
+    background-color: #000;
 }
 
 body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: transparent;
 }
 
-/* 2. La Vidéo : elle doit rester "fixée" au fond et couvrir tout */
+/* 2. La Vidéo */
 #bg-video {
     position: fixed;
     top: 0;
@@ -30,17 +30,22 @@ body {
     pointer-events: none;
 }
 
-/* 3. Le Conteneur : il doit faire exactement la taille de l'écran */
+/* 3. Centrage Accueil */
 .center-container {
-    position: absolute;
+    position: fixed; /* Utiliser fixed assure le centrage total sur l'écran */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     display: flex;
-    justify-content: center; /* Centre horizontalement */
-    align-items: center;     /* Centre verticalement */
-    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.center-container a {
+    display: block; /* Permet au lien de bien entourer l'image */
+    line-height: 0;
 }
 
 /* 4. Le Crâne */
@@ -50,9 +55,9 @@ body {
     filter: drop-shadow(0 0 15px #660000) sepia(100%) saturate(200%) hue-rotate(-50deg);
     animation: slow-glitch 8s ease-in-out infinite;
     opacity: 0.6;
+    cursor: pointer;
 }
 
-/* Animation lente */
 @keyframes slow-glitch {
     0%, 100% { transform: translate(0, 0) scale(1); }
     33% { transform: translate(2px, -3px) scale(1.01); }
@@ -60,34 +65,37 @@ body {
     35% { transform: translate(2px, -3px) scale(1.01); }
     66% { transform: translate(-2px, 4px) scale(0.99); }
 }
+
 /* --- Style pour la page du poème --- */
 .body-poeme {
-    background-color: #000 !important; /* Noir total */
+    background-color: #000 !important;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    color: #ffffff;
-    font-family: 'Courier New', Courier, monospace; /* Police style machine à écrire */
+    overflow-y: auto; /* Permet de scroller si le poème est long */
 }
 
 .container-poeme {
     text-align: center;
     max-width: 800px;
-    padding: 20px;
+    padding: 40px;
 }
 
 .container-poeme h1 {
-    color: #660000; /* Rouge sombre pour le titre */
+    color: #ff0000; /* Rouge vif */
     margin-bottom: 30px;
-    font-size: 2rem;
+    font-size: 2.2rem;
     text-transform: uppercase;
     letter-spacing: 5px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .container-poeme p {
+    color: #ff0000; /* Texte en rouge */
     line-height: 1.8;
-    font-size: 1.1rem;
-    opacity: 0.8;
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
