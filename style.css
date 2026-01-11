@@ -19,7 +19,7 @@ html, body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #000000;
+    background-color: transparent;
 }
 
 /* L'image avec l'effet de glitch rouge */
@@ -32,6 +32,9 @@ html, body {
     animation: slow-glitch 8s ease-in-out infinite;
     opacity: 0.6;
 }
+<video autoplay muted loop id="bg-video">
+        <source src="img/neige.mp4" type="video/mp4">
+    </video>
 
 /* Animation lente : flottement et distorsions rares */
 @keyframes slow-glitch {
