@@ -1,4 +1,4 @@
-/* Suppression de tout ce qui pourrait créer du blanc ou du gris */
+/* 1. Reset complet : on enlève les marges qui décalent tout */
 * {
     margin: 0;
     padding: 0;
@@ -8,53 +8,51 @@
 html, body {
     width: 100%;
     height: 100%;
-    background-color: #000000; /* Noir total */
-    overflow: hidden; /* Empêche tout mouvement ou scroll */
-    cursor: default; /* On pourra changer le curseur plus tard */
+    overflow: hidden; /* Empêche l'apparition de barres de défilement */
+    background-color: #000;
 }
-/* Conteneur pour centrer parfaitement l'élément */
-.center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+/* 2. La Vidéo : elle doit rester "fixée" au fond et couvrir tout */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.2;
+    filter: grayscale(100%) contrast(150%);
+    pointer-events: none;
+}
+
+/* 3. Le Conteneur : il doit faire exactement la taille de l'écran */
+.center-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center;     /* Centre verticalement */
     background-color: transparent;
 }
 
-/* L'image avec l'effet de glitch rouge */
+/* 4. Le Crâne */
 .glitch-skull {
     width: 300px;
     height: auto;
-    /* Filtre rouge plus sombre et profond */
     filter: drop-shadow(0 0 15px #660000) sepia(100%) saturate(200%) hue-rotate(-50deg);
-    /* Animation passée à 8 secondes */
     animation: slow-glitch 8s ease-in-out infinite;
     opacity: 0.6;
 }
-<video autoplay muted loop id="bg-video">
-        <source src="img/neige.mp4" type="video/mp4">
-    </video>
 
-/* Animation lente : flottement et distorsions rares */
+/* Animation lente */
 @keyframes slow-glitch {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        filter: drop-shadow(0 0 15px #660000) sepia(100%) saturate(200%) hue-rotate(-50deg);
-    }
-    33% {
-        transform: translate(2px, -3px) scale(1.01);
-    }
-    34% {
-        /* Un micro-glitch rapide et imperceptible */
-        transform: translate(-10px, 2px) skew(2deg);
-        filter: brightness(200%) contrast(300%);
-    }
-    35% {
-        transform: translate(2px, -3px) scale(1.01);
-    }
-    66% {
-        transform: translate(-2px, 4px) scale(0.99);
-        filter: drop-shadow(0 0 25px #ff0000) sepia(100%) saturate(300%);
-    }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(2px, -3px) scale(1.01); }
+    34% { transform: translate(-10px, 2px) skew(2deg); filter: brightness(200%); }
+    35% { transform: translate(2px, -3px) scale(1.01); }
+    66% { transform: translate(-2px, 4px) scale(0.99); }
 }
