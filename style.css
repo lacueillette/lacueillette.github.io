@@ -30,22 +30,23 @@ body {
     pointer-events: none;
 }
 
-/* 3. Centrage Accueil */
+/* 3. Centrage Accueil - MÉTHODE FORCÉE */
 .center-container {
-    position: fixed; /* Utiliser fixed assure le centrage total sur l'écran */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+    display: flex !important; /* Force le mode Flex */
+    justify-content: center !important; /* Centre horizontalement */
+    align-items: center !important;     /* Centre verticalement */
+    z-index: 10;
+    pointer-events: none; /* Laisse passer les clics vers le lien */
 }
 
 .center-container a {
-    display: block; /* Permet au lien de bien entourer l'image */
-    line-height: 0;
+    pointer-events: auto; /* Réactive le clic uniquement sur le crâne */
+    display: block;
 }
 
 /* 4. Le Crâne */
