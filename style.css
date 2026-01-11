@@ -12,3 +12,45 @@ html, body {
     overflow: hidden; /* Empêche tout mouvement ou scroll */
     cursor: default; /* On pourra changer le curseur plus tard */
 }
+/* Conteneur pour centrer parfaitement l'élément */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000;
+}
+
+/* L'image avec l'effet de glitch rouge */
+.glitch-skull {
+    width: 300px; /* Ajuste la taille selon ton image */
+    height: auto;
+    filter: drop-shadow(0 0 5px #ff0000) sepia(100%) saturate(300%) hue-rotate(-50deg);
+    animation: glitch-anim 0.2s infinite;
+    opacity: 0.8;
+}
+
+/* Animation de secousse et distorsion */
+@keyframes glitch-anim {
+    0% {
+        transform: translate(0);
+        filter: drop-shadow(0 0 5px #ff0000) sepia(100%) saturate(300%) hue-rotate(-50deg);
+    }
+    20% {
+        transform: translate(-5px, 5px) skew(5deg);
+    }
+    40% {
+        transform: translate(-5px, -5px) scale(1.05);
+        filter: contrast(150%) brightness(120%);
+    }
+    60% {
+        transform: translate(5px, 5px) skew(-5deg);
+    }
+    80% {
+        transform: translate(5px, -5px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
