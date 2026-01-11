@@ -9,7 +9,7 @@ html, body {
     width: 100%;
     height: 100%;
     overflow: hidden; /* Empêche l'apparition de barres de défilement */
-    background-color: #000;
+    background-color: transparent;
 }
 
 /* 2. La Vidéo : elle doit rester "fixée" au fond et couvrir tout */
