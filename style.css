@@ -1,14 +1,18 @@
-/* 1. Reset complet : on enlève les marges qui décalent tout */
+/* 1. Reset complet */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html {
+    background-color: #000; /* Fond noir profond */
+}
+
+body {
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Empêche l'apparition de barres de défilement */
+    overflow: hidden;
     background-color: transparent;
 }
 
